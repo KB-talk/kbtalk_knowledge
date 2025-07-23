@@ -14,7 +14,7 @@ import { defineUserConfig } from 'vuepress'
 import { plumeTheme } from 'vuepress-theme-plume'
 
 export default defineUserConfig({
-  base: '/kb_talk_knowlage/',
+  base: '/kbtalk_knowlage/',
   lang: 'zh-CN',
   title: '凯博的文档管理',
   description: '这里不生产标准答案，只野蛮生长着各种学习碎片。🌱',
