@@ -3,42 +3,43 @@ name: Deploy VuePress Docs
 on:
   push:
     branches: [master]
-  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          
+
+      # 必须先设置 pnpm！
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 10
-          
+          version: 8
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: pnpm
-          
+          cache: 'pnpm'  # 必须加引号
+
+      # 关键修改：使用 --frozen-lockfile
       - name: Install dependencies
-        run: pnpm install
+        run: |
+          pnpm install --frozen-lockfile
           
-      - name: Build VuePress site
+      - name: Build VuePress
         run: pnpm docs:build
-          
-      - name: Deploy to GitHub Pages
+
+      - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: docs/.vuepress/dist
           force_orphan: true
-          # 添加 cname 如果有自定义域名
-          # cname: yourdomain.com
