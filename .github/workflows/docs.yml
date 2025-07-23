@@ -2,27 +2,24 @@ name: Deploy VuePress Docs
 
 on:
   push:
-    branches: [master]  # 监听 master 分支的推送
+    branches: [master]
   workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
-    # 关键权限设置
     permissions:
-      contents: write  # 必须有写入权限才能推送 gh-pages 分支
+      contents: write
     
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 获取完整 Git 历史（用于 Git 插件）
+          fetch-depth: 0
           
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 10
-          run_install: true
           
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -36,11 +33,12 @@ jobs:
       - name: Build VuePress site
         run: pnpm docs:build
           
-      # 使用更稳定的 peaceiris/actions-gh-pages 替代
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: gh-pages  # 目标分支
-          publish_dir: docs/.vuepress/dist  # 构建输出目录
-          force_orphan: true  # 确保每次都是全新部署
+          publish_branch: gh-pages
+          publish_dir: docs/.vuepress/dist
+          force_orphan: true
+          # 添加 cname 如果有自定义域名
+          # cname: yourdomain.com
