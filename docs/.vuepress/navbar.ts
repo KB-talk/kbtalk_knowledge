@@ -14,7 +14,8 @@ export default defineNavbarConfig([
     text: '电子对抗',
     items: [
       { text: '雷达原理', link: '/leidayuanli/muggg4cx/' },
-      { text: '雷达对抗原理', link: '/leida/cx94emvp/' }
+      { text: '雷达对抗原理', link: '/leida/cx94emvp/' },
+      { text: '雷达数字信号处理', link: '/雷达信号处理/bo87dlwp/' }
     ]
   },
   { text: '博客', link: 'https://kb-talk.github.io/' },
