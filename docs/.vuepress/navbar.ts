@@ -8,8 +8,7 @@ import { defineNavbarConfig } from 'vuepress-theme-plume'
 
 export default defineNavbarConfig([
   { text: '主页', link: '/' },
-  { text: 'PyTorch', link: '/deeplearn/9r5680xu/' },
-  { text: 'STM32', link: '/article/7ex4uq89/' },
+  { text: 'Deep Learning', link: '/deeplearn/9r5680xu/' },
   {
     text: '电子对抗',
     items: [
@@ -18,8 +17,6 @@ export default defineNavbarConfig([
       { text: '雷达数字信号处理', link: '/雷达信号处理/bo87dlwp/' }
     ]
   },
+  { text: 'STM32', link: '/article/7ex4uq89/' },
   { text: '博客', link: 'https://kb-talk.github.io/' },
-  // { text: '标签', link: '/blog/tags/' },
-  // { text: '归档', link: '/blog/archives/' },
-
 ])

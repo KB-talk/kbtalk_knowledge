@@ -18,6 +18,6 @@ config:
 
         -
           theme: alt
-          text: STM32
-          link: /article/7ex4uq89/
+          text: 雷达原理
+          link: /leidayuanli/muggg4cx/
 ---
