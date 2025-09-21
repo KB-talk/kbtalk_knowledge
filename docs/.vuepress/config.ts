@@ -183,7 +183,6 @@ export default defineUserConfig({
      */
     encrypt: {
       rules: {
-        '/deeplearn/':'1234'
       }
     },
   }),
